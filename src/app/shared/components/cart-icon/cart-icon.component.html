@@ -1,1 +1,12 @@
-<p>cart-icon works!</p>
+<button mat-icon-button routerLink="cart" aria-label="Przejdź do koszyka">
+      <mat-icon
+        class="text-3xl"
+        [matBadge]="itemCount()"
+        [matBadgeHidden]="isItemCountZero()"
+        matBadgeColor="warn"
+        matBadgeSize="medium"
+        aria-hidden="true"
+      >
+        shopping_cart
+      </mat-icon>
+    </button>
