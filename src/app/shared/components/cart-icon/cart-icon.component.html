@@ -1,11 +1,10 @@
 <button mat-icon-button routerLink="cart" aria-label="go to cart" class="flex">
       <mat-icon
-        class="text-3xl"
+        class="icon-size"
         [matBadge]="itemCount()"
         [matBadgeHidden]="isItemCountZero()"
         matBadgeColor="warn"
-        matBadgeSize="medium"
-        aria-hidden="true"
+        [matBadgeSize]="matBadgeSize()"
       >
         shopping_cart
       </mat-icon>
