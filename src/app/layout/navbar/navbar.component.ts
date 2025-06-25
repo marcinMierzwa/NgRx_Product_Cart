@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { DesktopNavComponent } from "./desktop-nav/desktop-nav/desktop-nav.component";
 import { CartIconComponent } from "../../shared/components/cart-icon/cart-icon.component";
 
@@ -10,5 +10,7 @@ import { CartIconComponent } from "../../shared/components/cart-icon/cart-icon.c
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
+
+    categories = signal<string[]>(['example1', 'example2', 'example3', 'example4']);
 
 }
