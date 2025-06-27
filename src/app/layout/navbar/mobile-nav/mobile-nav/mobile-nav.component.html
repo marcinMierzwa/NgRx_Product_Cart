@@ -1,49 +1,47 @@
-<nav class=" bg-gray-100 p-4 ">
+<!-- NAV WRAPPER -->
+<div class="relative">
+  
+  <!-- 1. TOP BAR (Always Visible) -->
+  <nav class="bg-gray-100 p-4 relative z-20">
+    <div class="flex items-center justify-between px-2">
+      <div class="flex items-center gap-5">
+        <a href="https://flowbite.com/">
+          <img
+            src="https://flowbite.com/docs/images/logo.svg"
+            class="h-8"
+            alt="Logo"
+          />
+        </a>
+        <button class="flex items-center" (click)="toggleIsMenuOpen()" aria-label="Toggle Menu">
+          <mat-icon class="icon-size font-medium">{{ matIcon() }}</mat-icon>
+        </button>
+      </div>
 
-  <div class="flex items-center justify-between px-2 ">
-    <div class="flex gap-5">
-      <a href="https://flowbite.com/">
-        <img
-          src="https://flowbite.com/docs/images/logo.svg"
-          class="h-8"
-          alt="Logo"
-        />
-      </a>
-      <button class="flex items-center">
-        <mat-icon class="icon-size font-medium">menu</mat-icon>
-      </button>
+      <div class="flex items-center gap-6">
+        <button class="flex items-center">
+          <mat-icon class="icon-size font-medium">search</mat-icon>
+        </button>
+        <app-cart-icon [matBadgeSize]="'small'" />
+      </div>
     </div>
 
-    <div class="flex items-center gap-6">
-      <button class="flex items-center">
-        <mat-icon class="icon-size font-medium">search</mat-icon>
-      </button>
-      <app-cart-icon [matBadgeSize]="'small'" />
+
+    
+  </nav>
+
+  <!-- 2. MOBILE MENU OVERLAY -->
+  <div class="mobile-menu-overlay" [class.is-open]="isMenuOpen()">
+    <div class="p-4 pt-20">
+      <app-search-bar />
+
+      <ul class="flex flex-col gap-4 mt-6 ">
+        @for(category of categories(); track category) {
+        <li class="py-2 px-3 text-dark hover:text-blue-600 cursor-pointer text-xl">
+          {{ category }}
+        </li>
+        }
+      </ul>
     </div>
   </div>
 
-  <div class="h-screen mt-6 p-4 border-t border-gray-300 pt-6 ">
-    <app-search-bar />
-
-    <ul class="flex flex-col gap-4 mt-6">
-    @for(category of categories(); track category) {
-    <li class="py-2 px-3 text-gray-900 hover:text-blue-700 cursor-pointer">
-      {{ category }}
-    </li>
-    }
-  </ul>
-
-  </div>
-</nav>
-
-<!-- mobile menu -->
-
-<!-- <app-search-bar /> -->
-
-<!-- <ul class="flex md:gap-2 lg:gap-10">
-    @for(category of categories(); track category) {
-    <li class="py-2 px-3 text-gray-900 hover:text-blue-700 cursor-pointer">
-      {{ category }}
-    </li>
-    }
-  </ul> -->
+</div>

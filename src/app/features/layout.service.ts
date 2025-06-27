@@ -15,23 +15,23 @@ export class LayoutService {
 //     console.log('isDesktop :', this.isDesktop());
 //   });
 
-  public isHandset = toSignal(
+   public isMobile = toSignal(
     this.breakpointObserver
-      .observe(Breakpoints.Handset)
+      .observe([Breakpoints.XSmall])
       .pipe(map((result) => result.matches)),
     { initialValue: false }
   );
 
   public isTablet = toSignal(
     this.breakpointObserver
-      .observe(Breakpoints.Tablet)
+      .observe([Breakpoints.Small, Breakpoints.Medium])
       .pipe(map((result) => result.matches)),
     { initialValue: false }
   );
 
   public isDesktop = toSignal(
     this.breakpointObserver
-      .observe(Breakpoints.Web)
+      .observe([Breakpoints.Large, Breakpoints.XLarge])
       .pipe(map((result) => result.matches)),
     { initialValue: false }
   );

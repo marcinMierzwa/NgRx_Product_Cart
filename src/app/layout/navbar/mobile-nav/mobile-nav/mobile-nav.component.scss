@@ -1,0 +1,27 @@
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  z-index: 10; 
+  
+  transform: translateX(100%);
+  visibility: hidden;
+  
+  transition: transform 0.3s ease-in-out, visibility 0.3s;
+  
+  overflow-y: auto;
+}
+
+// The "Open" state for the menu
+.mobile-menu-overlay.is-open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.top-bar {
+  position: relative;
+  z-index: 20;
+}

@@ -5,7 +5,13 @@
 
 html, body { height: 100%; };
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; };
+
+body.menu-is-open {
+  overflow: hidden;
+}
+
+//utils
 .icon-size {
-    font-size: clamp(26px, 2.5vw ,30px) /* 30px */;
+    font-size: clamp(28px, 2.5vw ,30px) /* 30px */;
 }
 
