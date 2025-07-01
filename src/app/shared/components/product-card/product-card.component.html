@@ -1,5 +1,5 @@
 <div
-  class="bg-white flex flex-col rounded-sm overflow-hidden shadow-md hover:scale-[1.01] transition-all relative"
+  class="bg-white flex flex-col rounded overflow-hidden shadow-md hover:scale-[1.01] transition-all relative"
 >
   <a href="javascript:void(0)" class="block">
     <div class="w-full">
@@ -15,7 +15,7 @@
       >
         Lexicon Luxe
       </h5>
-        <p class="text-sm sm:text-base font-semibold text-slate-900">$10</p>
+        <p class="text-sm sm:text-base font-semibold text-slate-900">{{price | currency}}</p>
     </div>
   </a>
         <!--RATING  -->
@@ -24,7 +24,7 @@
   <div class="min-h-[50px] p-4 !pt-0">
     <button
       type="button"
-      class="mx-auto text-sm px-2 py-2 font-medium w-full bg-blue-600 hover:bg-blue-700 text-white tracking-wide outline-none border-none rounded"
+      class="mx-auto text-sm px-2 py-2 font-medium w-full bg-blue-700 hover:bg-blue-800 text-white tracking-wide outline-none border-none rounded"
     >
       Add to cart
     </button>
