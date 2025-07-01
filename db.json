@@ -1,178 +1,58 @@
 {
   "products": [
-    {
-      "id": 1,
-      "title": "Amazing grey t-shirt",
-      "price": 25.5,
-      "description": "",
-      "category": "hard rock",
-      "image": "assets/images/hard_rock/hd1.jpg",
-      "rating": {
-        "rate": 3.9,
-        "count": 120
-      }
-    },
-    {
-      "id": 2,
-      "title": "Mens Casual Premium Slim Fit T-Shirts ",
-      "price": 22.3,
-      "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing...",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 4.1,
-        "count": 259
-      }
-    },
-    {
-      "id": 3,
-      "title": "Mens Cotton Jacket",
-      "price": 55.99,
-      "description": "Great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions...",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 4.7,
-        "count": 500
-      }
-    },
-    {
-      "id": 4,
-      "title": "Mens Casual Slim Fit",
-      "price": 15.99,
-      "description": "The color could be slightly different between on the screen and in practice...",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 2.1,
-        "count": 430
-      }
-    },
-    {
-      "id": 5,
-      "title": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
-      "price": 695,
-      "description": "From our Legends Collection, the Naga was inspired by the mythical water dragon...",
-      "category": "jewelery",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 4.6,
-        "count": 400
-      }
-    },
-    {
-      "id": 6,
-      "title": "Solid Gold Petite Micropave ",
-      "price": 168,
-      "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days...",
-      "category": "jewelery",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 3.9,
-        "count": 70
-      }
-    },
-    {
-      "id": 7,
-      "title": "White Gold Plated Princess",
-      "price": 9.99,
-      "description": "Classic Created Wedding Engagement Solitaire Diamond Promise Ring...",
-      "category": "jewelery",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 3,
-        "count": 400
-      }
-    },
-    {
-      "id": 8,
-      "title": "Pierced Owl Rose Gold Plated Stainless Steel Double",
-      "price": 10.99,
-      "description": "Rose Gold Plated Double Flared Tunnel Plug Earrings...",
-      "category": "jewelery",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 1.9,
-        "count": 100
-      }
-    },
-    {
-      "id": 9,
-      "title": "WD 2TB Elements Portable External Hard Drive - USB 3.0",
-      "price": 64,
-      "description": "USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance...",
-      "category": "electronics",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 3.3,
-        "count": 203
-      }
-    },
-    {
-      "id": 10,
-      "title": "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
-      "price": 109,
-      "description": "Easy upgrade for faster boot up, shutdown, application load and response...",
-      "category": "electronics",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 2.9,
-        "count": 470
-      }
-    },
-    {
-      "id": 11,
-      "title": "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5",
-      "price": 109,
-      "description": "3D NAND flash are applied to deliver high transfer speeds...",
-      "category": "electronics",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 4.8,
-        "count": 319
-      }
-    },
-    {
-      "id": 12,
-      "title": "WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive",
-      "price": 114,
-      "description": "Expand your PS4 gaming experience, Play anywhere Fast and easy setup...",
-      "category": "electronics",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 4.8,
-        "count": 400
-      }
-    },
-    {
-      "id": 13,
-      "title": "Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin",
-      "price": 599,
-      "description": "21.5 inches Full HD widescreen IPS display and Radeon FreeSync technology...",
-      "category": "electronics",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 2.9,
-        "count": 250
-      }
-    },
-    {
-      "id": 14,
-      "title": "Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor",
-      "price": 999.99,
-      "description": "49 inch Super Ultrawide 32:9 curved gaming monitor with Quantum Dot technology...",
-      "category": "electronics",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 2.2,
-        "count": 140
-      }
+  {
+    "id": 1,
+    "title": "Electric Soul Graphic Tee",
+    "price": 29.99,
+    "description": "Unleash your inner rock legend with this classic tee. Featuring a masterfully illustrated guitarist lost in the music, it's a tribute to the raw energy and soul of hard rock. Perfect for concerts, jam sessions, or just showing off your impeccable taste.",
+    "category": "hard-rock",
+    "image": "assets/images/hard_rock/hd1.png",
+    "rating": {
+      "rate": 4.6,
+      "count": 188
     }
-  ],
+  },
+  {
+    "id": 2,
+    "title": "Fallen Angel Crest Tee",
+    "price": 28.99,
+    "description": "Wear your crown with pride. This highly detailed graphic tee features a formidable winged skull, a symbol of untamed freedom and power. It's more than just a shirt; it's a statement piece for the modern rebel with a cause.",
+    "category": "hard-rock",
+    "image": "assets/images/hard_rock/hd2.png",
+    "rating": {
+      "rate": 4.8,
+      "count": 254
+    }
+  },
+  {
+    "id": 3,
+    "title": "Red-Eyed Reaper Tee",
+    "price": 31.99,
+    "description": "Not for the faint of heart. This tee unleashes a visceral energy with its menacing skull, glowing red eyes, and a brutalist logo. Channel the raw power of heavy metal and make an unforgettable impression wherever you go.",
+    "category": "hard-rock",
+    "image": "assets/images/hard_rock/hd3.png",
+    "rating": {
+      "rate": 4.7,
+      "count": 312
+    }
+  },
+  {
+    "id": 4,
+    "title": "Vintage Rock Smokin' Skull Tee",
+    "price": 29.99,
+    "description": "Throw it back to the golden age of rock with this vintage-inspired tee. A cool-as-ice smoking skull set against a retro sunset stripe background captures the timeless spirit of rebellion. The perfect blend of old-school cool and modern edge.",
+    "category": "hard-rock",
+    "image": "assets/images/hard_rock/hd4.png",
+    "rating": {
+      "rate": 4.9,
+      "count": 405
+    }
+  }
+],
   "categories": [
-    "electronics",
-    "jewelery",
-    "men's clothing",
-    "women's clothing"
+    "hard-rock",
+    "heavy-metal",
+    "funk",
+    "blues"
   ]
 }
