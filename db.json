@@ -1130,11 +1130,11 @@
     }
   ],
 "categories": [
-  { "id": 1, "name": "hard rock" },
+  { "id": 1, "name": "bestsellers" },
   { "id": 2, "name": "heavy metal" },
-  { "id": 3, "name": "funk" },
+  { "id": 3, "name": "hard rock" },
   { "id": 4, "name": "alternative" },
-  { "id": 5, "name": "top sellers" }
+  { "id": 5, "name": "funk" }
 
 ]
 }

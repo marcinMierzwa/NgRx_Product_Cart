@@ -7,10 +7,11 @@
     />
   </a>
 
+
   <ul class="flex md:gap-2 lg:gap-10">
-    @for(category of categories(); track category) {
-    <li class="py-2 px-3 text-gray-900 hover:text-blue-700 cursor-pointer">
-      {{ category }}
+    @for(category of (categories$ | async); track category.id) {
+    <li class="py-2 px-3 font-medium tracking-wider text-gray-900 hover:text-blue-700 cursor-pointer">
+      {{ category.name }}
     </li>
     }
   </ul>
