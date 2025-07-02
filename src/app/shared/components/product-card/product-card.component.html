@@ -1,21 +1,21 @@
 <div
-  class="bg-white flex flex-col rounded overflow-hidden shadow-md hover:scale-[1.01] transition-all relative"
+  class="bg-white flex flex-col rounded overflow-hidden shadow-md border hover:scale-[1.01] transition-all relative"
 >
   <a href="javascript:void(0)" class="block">
     <div class="w-full">
       <img
-        [src]="photo"
+        [src]="product().image"
         alt="Product-1"
-        class="w-full aspect-[18/24] object-cover object-top"
+        class="p-4 !pb-0 max-h-[400px]"
       />
     </div>
-    <div class="flex items-center justify-between p-4 px-5">
+    <div class="sm:flex items-center justify-between p-4 px-5">
       <h5
         class="text-sm sm:text-base font-semibold text-slate-900 line-clamp-2"
       >
-        Lexicon Luxe
+        {{ product().title }}
       </h5>
-        <p class="text-sm sm:text-base font-semibold text-slate-900">{{price | currency}}</p>
+        <p class="text-sm sm:text-base font-semibold text-slate-900">{{product().price| currency}}</p>
     </div>
   </a>
         <!--RATING  -->

@@ -1,5 +1,6 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { ProductModel } from '../../../models/product.model';
 
 @Component({
   selector: 'app-product-card',
@@ -9,6 +10,5 @@ import { Component } from '@angular/core';
   styleUrl: './product-card.component.scss'
 })
 export class ProductCardComponent {
-  photo = 'assets/images/hard_rock/hd1.png';
-  price = 32;
+  product = input.required<ProductModel>();
 }

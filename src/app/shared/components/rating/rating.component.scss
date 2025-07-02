@@ -1,0 +1,15 @@
+.star-icon {
+  color: #fbbc05;
+  vertical-align: middle;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+@media ((max-width: 450px)) {
+  .star-icon {
+    font-size: 12px;
+    width: 12px;
+    height: 12px;
+  }
+}
