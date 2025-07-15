@@ -3,7 +3,6 @@ import { RouterLink } from '@angular/router';
 
 import { MatBadgeModule, MatBadgeSize  } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
-import { CartService } from '../../../features/cart/cart.service';
 
 @Component({
   selector: 'app-cart-icon',
@@ -13,10 +12,9 @@ import { CartService } from '../../../features/cart/cart.service';
   styleUrl: './cart-icon.component.scss'
 })
 export class CartIconComponent {
-  private readonly cartService = inject(CartService);
 
   matBadgeSize = input.required<MatBadgeSize>();
-  itemCount = this.cartService.itemCount;
-  isItemCountZero = this.cartService.isItemCountZero;
+  itemCount = 3;
+  isItemCountZero = false;
  
 }

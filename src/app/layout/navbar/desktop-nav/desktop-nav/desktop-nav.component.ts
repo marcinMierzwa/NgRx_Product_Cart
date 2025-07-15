@@ -4,11 +4,12 @@ import { CartIconComponent } from "../../../../shared/components/cart-icon/cart-
 import { Observable } from 'rxjs';
 import { CategoryModel } from '../../../../features/categories/models/category.model';
 import { AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-desktop-nav',
   standalone: true,
-  imports: [SearchBarComponent, CartIconComponent, AsyncPipe],
+  imports: [SearchBarComponent, CartIconComponent, AsyncPipe, RouterLink],
   templateUrl: './desktop-nav.component.html',
   styleUrl: './desktop-nav.component.scss'
 })
