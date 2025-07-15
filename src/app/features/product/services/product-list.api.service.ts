@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
-import { ProductModel } from "../../models/product.model";
+import { ProductModel } from "../models/product.model";
 
 interface ProductModelDto {
   readonly id: number;

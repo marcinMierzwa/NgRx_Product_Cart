@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./layout/navbar/navbar.component";
 import { HeaderComponent } from "./layout/header/header.component";
 import { FooterComponent } from "./layout/footer/footer.component";
-import { LayoutService } from './features/layout.service';
+import { LayoutService } from './core/services/layout.service';
 
 @Component({
   selector: 'app-root',

@@ -1,8 +1,8 @@
 import { Component, inject, OnInit, Signal } from '@angular/core';
-import { ProductCardComponent } from "../../shared/components/product-card/product-card.component";
-import { RatingComponent } from "../../shared/components/rating/rating.component";
 import { ProductModel } from '../../models/product.model';
-import { ProductListFacadeService } from './product-list.facade.service';
+import { ProductCardComponent } from '../product-card/product-card.component';
+import { RatingComponent } from '../../../../shared/components/rating/rating.component';
+import { ProductListFacadeService } from '../../services/product-list.facade.service';
 
 @Component({
   selector: 'app-product-list',
