@@ -1,6 +1,9 @@
+<app-loading-wrapper [isLoading]="isLoading$ | async">
+
 <div class="p-4 mx-auto lg:max-w-6xl md:max-w-4xl">
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-12">
-    @for(product of products(); track product.id) {
+
+    @for(product of products$ | async; track product.id) {
 
     <app-product-card [product]="product">
       <div card-rating>
@@ -10,3 +13,5 @@
     }
   </div>
 </div>
+
+</app-loading-wrapper>

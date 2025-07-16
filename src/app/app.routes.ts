@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { MainComponent } from './layout/main/main.component';
-import { CartPageComponent } from './features/cart/components/cart-page/cart-page.component';
 
 export const routes: Routes = [
     {
@@ -8,14 +6,16 @@ export const routes: Routes = [
         redirectTo: 'home',
         pathMatch: 'full',
     },
-    {
-        path: 'home',
-        component: MainComponent,
-        title: 'home'
-    },
-    {
-        path: 'cart',
-        component: CartPageComponent,
-        title: 'shopping-cart'
-    }
+{
+    path: 'home',
+    loadChildren: () =>
+      import('./features/product/store/product.routes').then(
+        (m) => m.PRODUCT_ROUTES
+      ),
+  },
+//   {
+//     path: 'cart',
+//     loadChildren: () =>
+//       import('./features/cart/cart.routes').then((m) => m.CART_ROUTES),
+//   },
 ];

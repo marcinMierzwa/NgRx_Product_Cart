@@ -1,0 +1,8 @@
+@if (isLoading()) {
+      <div class="spinner-container">
+        <mat-spinner></mat-spinner>
+        <p class="font-normal">Loading...</p>
+      </div>
+    } @else {
+      <ng-content></ng-content>
+    }
