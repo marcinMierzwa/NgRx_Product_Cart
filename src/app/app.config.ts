@@ -9,6 +9,7 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { metaReducers } from './store/meta-reducers';
+import * as errorHandlingEffects from './store/effects/error-handling.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideAnimationsAsync(),
     provideStore({}, { metaReducers }),
-    provideEffects([]),
+    provideEffects([errorHandlingEffects ]),
     isDevMode()
       ? provideStoreDevtools({
           maxAge: 25,
