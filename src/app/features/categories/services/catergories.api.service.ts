@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
-import { CategoryModel } from "./models/category.model";
+import { Category } from "../models/category.model";
+import { CategoryDto } from "../models/catergory.model.dto";
 
 @Injectable({providedIn: 'root'})
 export class CategoriesApiService {
@@ -9,8 +10,8 @@ export class CategoriesApiService {
     private readonly basicUrl = 'http://localhost:3001/categories';
 
 
-    getCatergories(): Observable<CategoryModel[]> {
-        return this.httpClient.get<CategoryModel[]>(this.basicUrl);
+    getCatergories(): Observable<CategoryDto[]> {
+        return this.httpClient.get<Category[]>(this.basicUrl);
     }
 
 

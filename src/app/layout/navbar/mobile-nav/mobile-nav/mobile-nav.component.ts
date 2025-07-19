@@ -4,8 +4,8 @@ import { SearchBarComponent } from "../../../../shared/components/search-bar/sea
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Observable } from 'rxjs';
-import { CategoryModel } from '../../../../features/categories/models/category.model';
 import { AsyncPipe } from '@angular/common';
+import { Category } from '../../../../features/categories/models/category.model';
 
 enum MatIconName {
   menu = "menu",
@@ -22,7 +22,7 @@ enum MatIconName {
 export class MobileNavComponent {
   private renderer = inject(Renderer2);
 
-  @Input({required: true}) categories$!: Observable<CategoryModel[]>;
+  @Input({required: true}) categories$!: Observable<Category[]>;
   isMenuOpen = signal<boolean>(false);
   matIcon: Signal<MatIconName> = computed(() => this.isMenuOpen() ? MatIconName.close : MatIconName.menu);
 

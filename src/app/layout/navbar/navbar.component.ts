@@ -1,10 +1,10 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { DesktopNavComponent } from "./desktop-nav/desktop-nav/desktop-nav.component";
 import { MobileNavComponent } from "./mobile-nav/mobile-nav/mobile-nav.component";
 import { LayoutService } from '../../core/services/layout.service';
 import { Observable } from 'rxjs';
-import { CategoryModel } from '../../features/categories/models/category.model';
-import { CategoriesFacadeService } from '../../features/categories/categories.facade.service';
+import { CategoriesFacadeService } from '../../features/categories/services/categories.facade.service';
+import { Category } from '../../features/categories/models/category.model';
 
 @Component({
   selector: 'app-navbar',
@@ -13,10 +13,14 @@ import { CategoriesFacadeService } from '../../features/categories/categories.fa
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
     private readonly layoutService: LayoutService = inject(LayoutService);
-    private readonly categoryService: CategoriesFacadeService = inject(CategoriesFacadeService);
+    private readonly categoryFacadeService: CategoriesFacadeService = inject(CategoriesFacadeService);
     readonly isMoblieView = this.layoutService.isMobile;
-    categories$: Observable<CategoryModel[]> = this.categoryService.categories$;
+    categories$: Observable<Category[]> = this.categoryFacadeService.categories$;
+
+        ngOnInit(): void {
+          this.categoryFacadeService.loadCategories();
+    }
 
 }

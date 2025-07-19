@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { SearchBarComponent } from "../../../../shared/components/search-bar/search-bar.component";
 import { CartIconComponent } from "../../../../shared/components/cart-icon/cart-icon.component";
 import { Observable } from 'rxjs';
-import { CategoryModel } from '../../../../features/categories/models/category.model';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Category } from '../../../../features/categories/models/category.model';
 
 @Component({
   selector: 'app-desktop-nav',
@@ -15,6 +15,6 @@ import { RouterLink } from '@angular/router';
 })
 export class DesktopNavComponent {
 
-@Input({required: true}) categories$!: Observable<CategoryModel[]>;
+@Input({required: true}) categories$!: Observable<Category[]>;
 
 }

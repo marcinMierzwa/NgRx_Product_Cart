@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProductListApiService } from '../services/product-list.api.service';
 import { ProductActions } from './product.actions';
 import { catchError, exhaustMap, map, of } from 'rxjs';
-import { ProductDto } from '../models/product.model.dto';
+import { Product } from '../models/product.model';
 
 export const loadProducts$ = createEffect(
   (
@@ -16,7 +16,7 @@ export const loadProducts$ = createEffect(
       exhaustMap(() =>
         apiService.getProducts().pipe(
           // if success invoke 'Success' action with fetched products
-          map((products: ProductDto[]) =>
+          map((products: Product[]) =>
             ProductActions.loadProductsSuccess({ products })
           ),
           // if error occured invoke action 'Failure' with error

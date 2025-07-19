@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { NotificationService } from '../../core/services/notification.service';
 import { ProductActions } from '../../features/product/store/product.actions';
 import { tap } from 'rxjs';
+import { CategoryActions } from '../../features/categories/store/category.actions';
 
 export const handleApiFailure$ = createEffect(
   (
@@ -11,7 +12,8 @@ export const handleApiFailure$ = createEffect(
   ) => {
     return actions$.pipe(
       ofType(
-        ProductActions.loadProductsFailure
+        ProductActions.loadProductsFailure,
+        CategoryActions.loadCategoriesFailure,
         // here all errors
       ),
       tap(({ error }) => {
