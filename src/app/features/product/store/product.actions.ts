@@ -1,8 +1,9 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { Product } from '../models/product.model';
+import { ProductFilter } from '../models/product-filter.model';
 
 export const ProductActions = createActionGroup({
-  source: 'Product API', // source of actions
+  source: 'Product', // source of actions
   events: {
     // action which triggering loading products
     'Load Products': emptyProps(),
@@ -10,5 +11,7 @@ export const ProductActions = createActionGroup({
     'Load Products Success': props<{ products: Product[] }>(),
     // action invokes when error occured
     'Load Products Failure': props<{ error: any }>(),
+    // action to set filter
+    'Set Filter': props<{ filter: ProductFilter }>(),
   },
 });

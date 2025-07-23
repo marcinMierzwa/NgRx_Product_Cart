@@ -16,14 +16,14 @@ import { LoadingWrapperComponent } from "../../../../shared/components/loading-w
 })
 export class ProductListComponent implements OnInit {
 
-  private readonly productListService: ProductListFacadeService = inject(ProductListFacadeService);
+  private readonly productListFacadeService: ProductListFacadeService = inject(ProductListFacadeService);
 
-  readonly products$: Observable<Product[]> = this.productListService.products$;
-  readonly isLoading$: Observable<boolean> = this.productListService.isLoading$;
+  readonly products$: Observable<Product[]> = this.productListFacadeService.products$;
+  readonly isLoading$: Observable<boolean> = this.productListFacadeService.isLoading$;
 
 
     ngOnInit(): void {
-      this.productListService.loadProducts();
+      this.productListFacadeService.loadProducts();
   }
 
 }
