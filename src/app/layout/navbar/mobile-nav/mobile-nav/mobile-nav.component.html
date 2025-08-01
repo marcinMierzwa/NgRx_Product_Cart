@@ -1,6 +1,5 @@
 <!-- NAV WRAPPER -->
 <div class="relative">
-  
   <!-- 1. TOP BAR (Always Visible) -->
   <nav class="bg-gray-100 p-4 relative z-20">
     <div class="flex items-center justify-between px-2">
@@ -12,7 +11,11 @@
             alt="Logo"
           />
         </a>
-        <button class="flex items-center" (click)="toggleIsMenuOpen()" aria-label="Toggle Menu">
+        <button
+          class="flex items-center"
+          (click)="toggleIsMenuOpen()"
+          aria-label="Toggle Menu"
+        >
           <mat-icon class="icon-size font-medium">{{ matIcon() }}</mat-icon>
         </button>
       </div>
@@ -24,9 +27,6 @@
         <app-cart-icon [matBadgeSize]="'small'" />
       </div>
     </div>
-
-
-    
   </nav>
 
   <!-- 2. MOBILE MENU OVERLAY -->
@@ -34,15 +34,25 @@
     <div class="p-4 pt-20">
       <app-search-bar />
 
-      <ul class="flex flex-col gap-4 mt-6 ">
-    @for(category of (categories$ | async); track category.id) {
-        <li class="py-2 px-3 text-dark tracking-wide hover:text-blue-600 cursor-pointer text-xl">
+      <ul class="flex flex-col gap-4 mt-6">
+        <li
+          class="py-2 px-3 text-dark tracking-wide hover:text-blue-600 cursor-pointer text-xl"
+        >
+          all
+        </li>
+        <li
+          class="py-2 px-3 text-dark tracking-wide hover:text-blue-600 cursor-pointer text-xl"
+        >
+          bestsellers
+        </li>
+        @for(category of (categories$ | async); track category.id) {
+        <li
+          class="py-2 px-3 text-dark tracking-wide hover:text-blue-600 cursor-pointer text-xl"
+        >
           {{ category.name }}
         </li>
         }
       </ul>
-    
     </div>
   </div>
-
 </div>

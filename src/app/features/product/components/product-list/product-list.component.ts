@@ -22,7 +22,7 @@ export class ProductListComponent implements OnInit {
 
 
     ngOnInit(): void {
-      this.productListFacadeService.showAllProducts();
+      this.productListFacadeService.showBestsellers();
   }
 
 }

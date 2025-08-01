@@ -31,7 +31,7 @@ export class ProductListFacadeService {
     this.store.dispatch(ProductActions.showAllProducts());
   }
 
-  showBestsellets(): void {
+  showBestsellers(): void {
     this.store.dispatch(ProductActions.showBestsellers());
   }
 

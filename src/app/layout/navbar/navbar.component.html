@@ -1,6 +1,12 @@
 @if(isMoblieView()) {
 <app-mobile-nav [categories$]="categories$"> </app-mobile-nav>
 } @else {
-<app-desktop-nav [categories$]="categories$"> </app-desktop-nav>
+<app-desktop-nav 
+[categories$]="categories$"
+(showAllClicked)="onShowAll()"
+(showBestsellersClicked)="onShowBestsellers()"
+(categoryClicked)="onShowCategory($event)"
+> 
+</app-desktop-nav>
 }
 

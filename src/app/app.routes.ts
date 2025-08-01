@@ -39,7 +39,7 @@ export const routes: Routes = [
       //   loadChildren: () =>
       //     import('./features/cart/cart.routes').then((m) => m.CART_ROUTES),
       // },
+      { path: '**', redirectTo: 'home' } 
     ],
   },
-  // Tutaj mogą być inne trasy, np. '/login', które nie używają MainLayoutComponent
 ];

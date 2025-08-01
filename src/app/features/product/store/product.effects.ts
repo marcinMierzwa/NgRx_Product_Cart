@@ -42,11 +42,12 @@ export const loadProductsOnFilterChange$ = createEffect(
         // logic to bulid params depending on display mode
         switch (displayMode) {
           case 'bestsellers':
-            // params['sortBy'] = 'ratingRate';
-            // params['sortOrder'] = 'desc';
+            params['sortBy'] = 'ratingRate';
+            params['sortOrder'] = 'desc';
+            params['pageSize'] = 10;
+            params['page'] = 1;
             break;
 
-          case 'byCategory':
           case 'byCategory':
             if (selectedCategoryId) {
               params['categoryId'] = selectedCategoryId;

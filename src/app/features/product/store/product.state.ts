@@ -25,7 +25,7 @@ export const initialProductState: ProductState = productAdapter.getInitialState(
   {
     isLoading: false,
     error: null,
-    displayMode: 'all', // default init
+    displayMode: 'bestsellers', // default init
     selectedCategoryId: null,
     pagination: {
       currentPage: 1,
