@@ -1,1 +1,0 @@
-export type ProductFilter = 'all' | 'bestsellers';

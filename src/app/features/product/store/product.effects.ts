@@ -4,7 +4,13 @@ import { ProductListApiService } from '../services/product-list.api.service';
 import { ProductActions } from './product.actions';
 import { catchError, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { selectActiveFilter } from './product.reducer';
+import { selectProductsState } from './product.reducer';
+import { selectCategoryEntities } from '../../categories/store/category.reducer';
+import {
+  selectDisplayMode,
+  selectPagination,
+  selectSelectedCategoryId,
+} from './product.reducer';
 
 export const loadProductsOnFilterChange$ = createEffect(
   (
@@ -13,26 +19,58 @@ export const loadProductsOnFilterChange$ = createEffect(
     store = inject(Store)
   ) => {
     return actions$.pipe(
-      // Uruchom ten efekt, gdy ZMIENI SIĘ FILTR lub gdy ktoś wywoła 'Load Products'
-      ofType(ProductActions.setFilter, ProductActions.loadProducts),
-      // Pobierz najnowszy stan filtra z Store
-      withLatestFrom(store.select(selectActiveFilter)),
-      // Używamy switchMap, aby anulować poprzednie żądanie, jeśli filtr szybko się zmieni
-      switchMap(([action, activeFilter]) => {
-        // Konstruujemy parametry zapytania
-        const params: { [key: string]: any } = { _limit: 20 };
-        if (activeFilter === 'bestsellers') {
-          params['_sort'] = 'rating.rate';
-          params['_order'] = 'desc';
+      ofType(
+        ProductActions.showBestsellers,
+        ProductActions.showAllProducts,
+        ProductActions.showCategory,
+        ProductActions.changePage,
+        ProductActions.loadProducts
+      ),
+      // Geting all state
+      withLatestFrom(
+        store.select(selectDisplayMode),
+        store.select(selectPagination),
+        store.select(selectSelectedCategoryId)
+      ),
+      // using switchMap, to delete last request
+      switchMap(([action, displayMode, pagination, selectedCategoryId]) => {
+        // creating params
+        const params: { [key: string]: any } = {
+          page: pagination.currentPage,
+          pageSize: pagination.pageSize,
+        };
+        // logic to bulid params depending on display mode
+        switch (displayMode) {
+          case 'bestsellers':
+            // params['sortBy'] = 'ratingRate';
+            // params['sortOrder'] = 'desc';
+            break;
+
+          case 'byCategory':
+          case 'byCategory':
+            if (selectedCategoryId) {
+              params['categoryId'] = selectedCategoryId;
+            }
+            break;
+
+          case 'all':
+          default:
+            break;
         }
-        
+
         return apiService.getProducts(params).pipe(
-          map((products) => ProductActions.loadProductsSuccess({ products })),
-          catchError((error) => of(ProductActions.loadProductsFailure({ error })))
+          map((response) =>
+            ProductActions.loadProductsSuccess({
+              products: response.data,
+              meta: response.meta,
+            })
+          ),
+          catchError((error) =>
+            of(ProductActions.loadProductsFailure({ error }))
+          )
         );
       })
     );
   },
   { functional: true }
 );
-

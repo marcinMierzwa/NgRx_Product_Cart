@@ -1,0 +1,1 @@
+export type ProductDisplayMode = 'all' | 'bestsellers' | 'byCategory';

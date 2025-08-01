@@ -1,12 +1,16 @@
 export interface ProductDto {
-  readonly id: number;
-  readonly title: string;
-  readonly price: number;
-  readonly description: string;
-  readonly category: string;
-  readonly image: string;
-  readonly rating: {
-    readonly rate: number;
-    readonly count: number;
+  id: string;
+  title: string;
+  price: number;
+  description: string;
+  image: string;
+  ratingRate: number;
+  ratingCount: number;
+  createdAt: Date;
+  updatedAt: Date;
+  categoryId: string;
+  category?: {
+    id: string;
+    name: string;
   };
 }

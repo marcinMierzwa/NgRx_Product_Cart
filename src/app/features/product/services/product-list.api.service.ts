@@ -1,19 +1,17 @@
-import { HttpClient, HttpParams } from "@angular/common/http";
-import { Injectable, inject } from "@angular/core";
-import { Observable } from "rxjs";
-import { Product } from "../models/product.model";
-import { ProductDto } from "../models/product.model.dto";
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Product } from '../models/product.model';
+import { PaginatedResponse } from '../../../shared/models/paginated-response.model';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class ProductListApiService {
-    private readonly httpClient: HttpClient = inject(HttpClient);
-    private readonly basicUrl = 'http://localhost:3001/products';
+  private readonly httpClient: HttpClient = inject(HttpClient);
+  private readonly basicUrl = 'http://localhost:3000/products';
 
-
-    getProducts(queryParams?: { [key: string]: any }): Observable<Product[]> {
+  getProducts(queryParams?: { [key: string]: any }):Observable<PaginatedResponse<Product>> {
     let httpParams = new HttpParams();
 
-    // 3. Jeśli przekazano parametry, dodaj je do HttpParams
     if (queryParams) {
       for (const key in queryParams) {
         if (queryParams.hasOwnProperty(key)) {
@@ -22,10 +20,7 @@ export class ProductListApiService {
       }
     }
 
-    // 4. Przekaż `httpParams` jako opcję 'params' do metody .get()
-    return this.httpClient.get<ProductDto[]>(this.basicUrl, { params: httpParams });
+    return this.httpClient
+      .get<PaginatedResponse<Product>>(`${this.basicUrl}`, { params: httpParams })
   }
 }
-
-
-

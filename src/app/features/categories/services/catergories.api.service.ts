@@ -7,7 +7,7 @@ import { CategoryDto } from "../models/catergory.model.dto";
 @Injectable({providedIn: 'root'})
 export class CategoriesApiService {
     private readonly httpClient: HttpClient = inject(HttpClient);
-    private readonly basicUrl = 'http://localhost:3001/categories';
+    private readonly basicUrl = 'http://localhost:3000/categories';
 
 
     getCatergories(): Observable<CategoryDto[]> {

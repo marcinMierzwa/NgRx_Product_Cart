@@ -7,7 +7,10 @@
 
     <app-product-card [product]="product">
       <div card-rating>
-        <app-rating [ratingData]="product.rating" />
+        <app-rating 
+        [productRate]="product.ratingRate"
+        [productCount]="product.ratingCount"
+        />
       </div>
     </app-product-card>
     }
