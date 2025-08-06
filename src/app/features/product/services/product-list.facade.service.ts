@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import {
   selectAllProducts,
   selectPagination,
+  selectProductDisplayTitle,
   selectProductIsLoading,
 } from '../store/product.reducer';
 import { ProductActions } from '../store/product.actions';
@@ -20,7 +21,11 @@ export class ProductListFacadeService {
   public readonly isLoading$: Observable<boolean> = this.store.select(
     selectProductIsLoading
   );
-   public readonly pagination$: Observable<PageMeta> = this.store.select(selectPagination);
+  public readonly pagination$: Observable<PageMeta> =
+    this.store.select(selectPagination);
+  public readonly categoryTitle$: Observable<string> = this.store.select(
+    selectProductDisplayTitle
+  );
 
   // share public method do trigger action
   loadProducts(): void {

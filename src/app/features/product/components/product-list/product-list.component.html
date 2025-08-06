@@ -1,20 +1,36 @@
-<app-loading-wrapper [isLoading]="isLoading$ | async">
+<!-- <app-loading-wrapper [isLoading]="isLoading$ | async"> -->
 
 <div class="p-4 mx-auto lg:max-w-6xl md:max-w-4xl">
-  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-12">
+  <h2 class="p-2 tracking-wide font-medium text-lg text-zinc-800">
+    {{ categoryTitle$ | async | titlecase }}
+  </h2>
 
-    @for(product of products$ | async; track product.id) {
+  <div
+    [@listAnimation]="products$ | async"
+    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-12"
+  >
+    @if (isLoading$ | async) {
+
+    <!-- the same skeletons as pageSize -->
+    @for (_ of [].constructor((pagination$ | async)?.pageSize || 8); track
+    $index) {
+    <app-product-card-skeleton></app-product-card-skeleton>
+    } } @else {
+
+   
+    @defer (on immediate) { @for(product of products$ | async; track product.id)
+    {
 
     <app-product-card [product]="product">
       <div card-rating>
-        <app-rating 
-        [productRate]="product.ratingRate"
-        [productCount]="product.ratingCount"
+        <app-rating
+          [productRate]="product.ratingRate"
+          [productCount]="product.ratingCount"
         />
       </div>
     </app-product-card>
-    }
+    } } }
   </div>
 </div>
 
-</app-loading-wrapper>
+<!-- </app-loading-wrapper> -->
