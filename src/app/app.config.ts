@@ -1,5 +1,5 @@
 import { ApplicationConfig, isDevMode } from '@angular/core';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { provideRouter, withComponentInputBinding, withViewTransitions } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
@@ -13,7 +13,7 @@ import * as errorHandlingEffects from './store/effects/error-handling.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes, withComponentInputBinding()),
+    provideRouter(routes, withViewTransitions(), withComponentInputBinding()),
     provideHttpClient(),
     provideAnimationsAsync(),
     provideStore({}, { metaReducers }),
