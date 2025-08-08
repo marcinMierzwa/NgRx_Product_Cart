@@ -2,15 +2,14 @@ import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProductListApiService } from '../services/product-list.api.service';
 import { ProductActions } from './product.actions';
-import { catchError, map, of, switchMap, withLatestFrom } from 'rxjs';
+import { catchError, map, of, switchMap, tap, withLatestFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { selectProductsState } from './product.reducer';
-import { selectCategoryEntities } from '../../categories/store/category.reducer';
 import {
   selectDisplayMode,
   selectPagination,
   selectSelectedCategoryId,
 } from './product.reducer';
+import { ScrollService } from '../../../shared/services/scroll.service';
 
 export const loadProductsOnFilterChange$ = createEffect(
   (
@@ -34,30 +33,43 @@ export const loadProductsOnFilterChange$ = createEffect(
       ),
       // using switchMap, to delete last request
       switchMap(([action, displayMode, pagination, selectedCategoryId]) => {
-        // creating params
         const params: { [key: string]: any } = {
+          pageSize: pagination.pageSize, // Domyślnie 20
           page: pagination.currentPage,
-          pageSize: pagination.pageSize,
+          displayMode: displayMode,
         };
-        // logic to bulid params depending on display mode
+
         switch (displayMode) {
           case 'bestsellers':
             params['sortBy'] = 'ratingRate';
             params['sortOrder'] = 'desc';
-            params['pageSize'] = 10;
+            params['pageSize'] = 30;
             params['page'] = 1;
             break;
 
           case 'byCategory':
             if (selectedCategoryId) {
               params['categoryId'] = selectedCategoryId;
+              params['pageSize'] = 20;
+              params['page'] = 1;
             }
             break;
-
-          case 'all':
-          default:
-            break;
         }
+        if (
+          action.type === ProductActions.changePage.type &&
+          displayMode !== 'bestsellers'
+        ) {
+          params['page'] = action.page;
+        }
+
+        if (
+          action.type === ProductActions.showAllProducts.type ||
+          action.type === ProductActions.showCategory.type
+        ) {
+          params['page'] = 1;
+        }
+
+        console.log(`Final params for action [${action.type}]:`, params);
 
         return apiService.getProducts(params).pipe(
           map((response) =>
@@ -74,4 +86,19 @@ export const loadProductsOnFilterChange$ = createEffect(
     );
   },
   { functional: true }
+);
+
+export const scrollOnLoadSuccess$ = createEffect(
+  (
+    actions$:Actions = inject(Actions),
+    scrollService:ScrollService = inject(ScrollService)
+  ) => {
+    return actions$.pipe(
+      ofType(ProductActions.loadProductsSuccess),
+      tap(() => {
+        scrollService.triggerScrollToTop();
+      })
+    )
+  },
+   { functional: true, dispatch: false }
 );

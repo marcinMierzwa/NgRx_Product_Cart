@@ -21,12 +21,7 @@ export const productFeature = createFeature({
       return productAdapter.setAll(products, {
         ...state,
         isLoading: false,
-        pagination: {
-          currentPage: meta.currentPage,
-          pageSize: meta.pageSize,
-          totalItems: meta.totalItems,
-          totalPages: meta.totalPages,
-        },
+        pagination: meta,
       });
     }),
     // when loading success
@@ -65,6 +60,8 @@ export const productFeature = createFeature({
     // when page is changing
     on(ProductActions.changePage, (state, { page }) => ({
       ...state,
+      isLoading: true,
+      error: null,
       pagination: { ...state.pagination, currentPage: page },
     }))
   ),
@@ -110,7 +107,9 @@ export const selectProductDisplayTitle = createSelector(
         return 'bestsellers';
 
       case 'byCategory':
-        const categoryName = categoryId ? categoryEntities[categoryId]?.name : undefined;
+        const categoryName = categoryId
+          ? categoryEntities[categoryId]?.name
+          : undefined;
         return categoryName ?? 'category';
 
       case 'all':

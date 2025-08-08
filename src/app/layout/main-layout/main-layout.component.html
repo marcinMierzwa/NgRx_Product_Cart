@@ -1,11 +1,16 @@
-<div class="w-screen bg-slate-50">
+<div class="flex flex-col h-screen bg-slate-50">
 
-  <app-navbar />
+  <!-- Header takes as he needs -->
+  <app-navbar class="flex-shrink-0"></app-navbar>
+  <app-header class="flex-shrink-0"></app-header>
 
-  <app-header />
+  <!-- 
+  main container i flexible
+  -->
+  <main #mainContent class="flex-grow overflow-y-auto main-content">
+    <router-outlet></router-outlet>
+  </main>
 
-  <router-outlet />
-
-  <app-footer />
+  <app-footer class="flex-shrink-0"></app-footer>
   
 </div>
