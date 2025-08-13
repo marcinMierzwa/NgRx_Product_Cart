@@ -29,7 +29,7 @@ export const initialProductState: ProductState = productAdapter.getInitialState(
     selectedCategoryId: null,
     pagination: {
       currentPage: 1,
-      pageSize: 20,
+      pageSize: 10,
       totalItems: 0,
       totalPages: 0,
     },

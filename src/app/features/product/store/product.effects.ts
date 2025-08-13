@@ -50,7 +50,7 @@ export const loadProductsOnFilterChange$ = createEffect(
           case 'byCategory':
             if (selectedCategoryId) {
               params['categoryId'] = selectedCategoryId;
-              params['pageSize'] = 20;
+              params['pageSize'] = 10;
               params['page'] = 1;
             }
             break;

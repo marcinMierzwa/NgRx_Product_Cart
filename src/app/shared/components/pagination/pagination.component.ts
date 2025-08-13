@@ -1,5 +1,12 @@
-import { Component, effect, input, output } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { PageMeta } from '../../models/page-meta.model';
+
+type PageItem = { type: 'page'; value: number } | { type: 'ellipsis' };
+
+const range = (start: number, end: number): number[] => {
+  const length = end - start + 1;
+  return Array.from({ length }, (_, idx) => idx + start);
+};
 
 @Component({
   selector: 'app-pagination',
@@ -11,6 +18,76 @@ import { PageMeta } from '../../models/page-meta.model';
 export class PaginationComponent {
   paginationData = input.required<PageMeta | null>();
   changePageEvent = output<number>();
+
+  public pages = computed<PageItem[]>(() => {
+    const data = this.paginationData();
+    if (!data) {
+      return [];
+    }
+
+    const { currentPage, totalPages } = data;
+    const siblingCount = 1;
+    const totalVisibleBlocks = siblingCount + 5;
+
+    // PRZYPADEK 1: Pokaż wszystkie strony
+    if (totalPages <= totalVisibleBlocks) {
+      // ZMIANA: Dodajemy 'as const' do typu
+      return range(1, totalPages).map(p => ({ type: 'page' as const, value: p }));
+    }
+
+    const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
+    const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPages);
+    const shouldShowLeftEllipsis = leftSiblingIndex > 2;
+    const shouldShowRightEllipsis = rightSiblingIndex < totalPages - 2;
+    const firstPageIndex = 1;
+    const lastPageIndex = totalPages;
+
+    // PRZYPADEK 2: Blisko końca
+    if (shouldShowLeftEllipsis && !shouldShowRightEllipsis) {
+      const rightItemCount = 3 + 2 * siblingCount;
+      const rightRange = range(totalPages - rightItemCount + 1, totalPages);
+      return [
+        { type: 'page' as const, value: firstPageIndex }, // ZMIANA
+        { type: 'ellipsis' as const },
+        ...rightRange.map(p => ({ type: 'page' as const, value: p })) // ZMIANA
+      ];
+    }
+    
+    // PRZYPADEK 3: Blisko początku
+    if (!shouldShowLeftEllipsis && shouldShowRightEllipsis) {
+      const leftItemCount = 3 + 2 * siblingCount;
+      const leftRange = range(1, leftItemCount);
+      return [
+        ...leftRange.map(p => ({ type: 'page' as const, value: p })), // ZMIANA
+        { type: 'ellipsis' as const },
+        { type: 'page' as const, value: lastPageIndex } // ZMIANA
+      ];
+    }
+
+    // PRZYPADEK 4: W środku
+    if (shouldShowLeftEllipsis && shouldShowRightEllipsis) {
+      const middleRange = range(leftSiblingIndex, rightSiblingIndex);
+      return [
+        { type: 'page' as const, value: firstPageIndex }, // ZMIANA
+        { type: 'ellipsis' as const },
+        ...middleRange.map(p => ({ type: 'page' as const, value: p })), // ZMIANA
+        { type: 'ellipsis' as const },
+        { type: 'page' as const, value: lastPageIndex } // ZMIANA
+      ];
+    }
+
+    return [];
+  });
+
+
+
+
+
+
+
+
+
+
 
   onPreviousPage(  ): void {
     const pagination = this.paginationData();
