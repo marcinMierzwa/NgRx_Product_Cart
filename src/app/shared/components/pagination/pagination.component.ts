@@ -13,7 +13,7 @@ const range = (start: number, end: number): number[] => {
   standalone: true,
   imports: [],
   templateUrl: './pagination.component.html',
-  styleUrl: './pagination.component.scss'
+  styleUrl: './pagination.component.scss',
 })
 export class PaginationComponent {
   paginationData = input.required<PageMeta | null>();
@@ -29,10 +29,11 @@ export class PaginationComponent {
     const siblingCount = 1;
     const totalVisibleBlocks = siblingCount + 5;
 
-    // PRZYPADEK 1: Pokaż wszystkie strony
     if (totalPages <= totalVisibleBlocks) {
-      // ZMIANA: Dodajemy 'as const' do typu
-      return range(1, totalPages).map(p => ({ type: 'page' as const, value: p }));
+      return range(1, totalPages).map((p) => ({
+        type: 'page' as const,
+        value: p,
+      }));
     }
 
     const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
@@ -42,71 +43,62 @@ export class PaginationComponent {
     const firstPageIndex = 1;
     const lastPageIndex = totalPages;
 
-    // PRZYPADEK 2: Blisko końca
     if (shouldShowLeftEllipsis && !shouldShowRightEllipsis) {
       const rightItemCount = 3 + 2 * siblingCount;
       const rightRange = range(totalPages - rightItemCount + 1, totalPages);
       return [
-        { type: 'page' as const, value: firstPageIndex }, // ZMIANA
+        { type: 'page' as const, value: firstPageIndex }, 
         { type: 'ellipsis' as const },
-        ...rightRange.map(p => ({ type: 'page' as const, value: p })) // ZMIANA
+        ...rightRange.map((p) => ({ type: 'page' as const, value: p })), 
       ];
     }
-    
-    // PRZYPADEK 3: Blisko początku
+
     if (!shouldShowLeftEllipsis && shouldShowRightEllipsis) {
       const leftItemCount = 3 + 2 * siblingCount;
       const leftRange = range(1, leftItemCount);
       return [
-        ...leftRange.map(p => ({ type: 'page' as const, value: p })), // ZMIANA
+        ...leftRange.map((p) => ({ type: 'page' as const, value: p })), 
         { type: 'ellipsis' as const },
-        { type: 'page' as const, value: lastPageIndex } // ZMIANA
+        { type: 'page' as const, value: lastPageIndex }, 
       ];
     }
 
-    // PRZYPADEK 4: W środku
     if (shouldShowLeftEllipsis && shouldShowRightEllipsis) {
       const middleRange = range(leftSiblingIndex, rightSiblingIndex);
       return [
-        { type: 'page' as const, value: firstPageIndex }, // ZMIANA
+        { type: 'page' as const, value: firstPageIndex }, 
         { type: 'ellipsis' as const },
-        ...middleRange.map(p => ({ type: 'page' as const, value: p })), // ZMIANA
+        ...middleRange.map((p) => ({ type: 'page' as const, value: p })), 
         { type: 'ellipsis' as const },
-        { type: 'page' as const, value: lastPageIndex } // ZMIANA
+        { type: 'page' as const, value: lastPageIndex }, 
       ];
     }
 
     return [];
   });
 
-
-
-
-
-
-
-
-
-
-
-  onPreviousPage(  ): void {
+  onPreviousPage(): void {
     const pagination = this.paginationData();
-    if(pagination && pagination.currentPage > 1) {
+    if (pagination && pagination.currentPage > 1) {
       this.goToPage(pagination.currentPage - 1);
     }
   }
 
   onNextPage(): void {
     const pagination = this.paginationData();
-    if(pagination && pagination.currentPage < pagination.totalPages) {
+    if (pagination && pagination.currentPage < pagination.totalPages) {
       this.goToPage(pagination.currentPage + 1);
     }
-
   }
 
   goToPage(page: number): void {
     const pagination = this.paginationData();
-    if(!pagination || page < 1 || page > pagination!.totalPages || page === pagination!.currentPage) {
+    if (
+      !pagination ||
+      page < 1 ||
+      page > pagination!.totalPages ||
+      page === pagination!.currentPage
+    ) {
       return;
     }
     this.changePageEvent.emit(page);

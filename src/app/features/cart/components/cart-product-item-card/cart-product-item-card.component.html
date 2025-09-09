@@ -1,0 +1,48 @@
+<div class="lg:col-span-2 space-y-6">
+  <div
+    class="flex gap-4 bg-white px-4 py-6 rounded-md shadow-sm border border-gray-200"
+  >
+    <div class="flex gap-6 sm:gap-4 max-sm:flex-col">
+      <div class="w-24 h-24 max-sm:w-24 max-sm:h-24 shrink-0">
+        <img
+          src="https://readymadeui.com/images/sunglass6.webp"
+          class="w-full h-full object-contain"
+        />
+      </div>
+      <div class="flex flex-col gap-2 sm:gap-3">
+        <div>
+          <h3 class="text-sm sm:text-base font-semibold text-slate-900">
+            Round Glass
+          </h3>
+        </div>
+        <div>
+          <p class="text-sm">{{ title | wordLimit : 15 }}</p>
+        </div>
+        <div class="mt-auto">
+          <h3 class="text-sm font-semibold text-slate-900">$20.00</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="ml-auto justify-between flex flex-col">
+      <div class="flex items-start gap-4 justify-end">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-4 h-4 cursor-pointer fill-slate-400 hover:fill-red-600 inline-block"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
+            data-original="#000000"
+          ></path>
+          <path
+            d="M11 17v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Zm4 0v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Z"
+            data-original="#000000"
+          ></path>
+        </svg>
+      </div>
+
+      <app-cart-product-quantity />
+    </div>
+  </div>
+</div>
