@@ -17,7 +17,7 @@
     { @defer (on immediate) { @for(product of products$ | async; track
     product.id) {
 
-    <app-product-card [product]="product">
+    <app-product-card [product]="product" (addToCart)="addToCart($event)">
       <div card-rating>
         <app-rating
           [productRate]="product.ratingRate"

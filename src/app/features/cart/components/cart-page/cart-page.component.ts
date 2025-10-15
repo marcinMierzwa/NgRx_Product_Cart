@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { CartProductsListComponent } from "../cart-products-list/cart-products-list.component";
 
 @Component({
   selector: 'app-cart-page',
   standalone: true,
-  imports: [],
+  imports: [CartProductsListComponent],
   templateUrl: './cart-page.component.html',
   styleUrl: './cart-page.component.scss'
 })

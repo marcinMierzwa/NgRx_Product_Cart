@@ -1,5 +1,6 @@
 <div class="flex items-center gap-3 mt-auto">
         <button
+          (click)="onDecrementQuantity(productId)"
           type="button"
           class="flex items-center justify-center w-[18px] h-[18px] cursor-pointer bg-slate-400 outline-none rounded-full"
         >
@@ -14,8 +15,11 @@
             ></path>
           </svg>
         </button>
-        <span class="font-semibold text-base leading-[18px]">1</span>
+
+        <span class="font-semibold text-base leading-[18px]">{{ quantity }}</span>
+
         <button
+          (click)="onIncrementQuantity(productId)"
           type="button"
           class="flex items-center justify-center w-[18px] h-[18px] cursor-pointer bg-slate-800 outline-none rounded-full"
         >

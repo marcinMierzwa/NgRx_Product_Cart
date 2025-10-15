@@ -68,9 +68,6 @@ export const loadProductsOnFilterChange$ = createEffect(
         ) {
           params['page'] = 1;
         }
-
-        console.log(`Final params for action [${action.type}]:`, params);
-
         return apiService.getProducts(params).pipe(
           map((response) =>
             ProductActions.loadProductsSuccess({

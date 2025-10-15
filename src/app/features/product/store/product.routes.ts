@@ -1,9 +1,6 @@
 import { Routes } from '@angular/router';
-import { provideState } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
-
 import * as productEffects from './product.effects';
-import { productFeature } from './product.reducer';
 import { MainComponent } from '../../../layout/main/main.component';
 
 
@@ -14,7 +11,6 @@ export const PRODUCT_ROUTES: Routes = [
     title: 'Home',
     // from store
     providers: [
-      provideState(productFeature),
       provideEffects(productEffects),
     ],
   },

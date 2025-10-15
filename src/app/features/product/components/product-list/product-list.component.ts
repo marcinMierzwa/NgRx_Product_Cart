@@ -72,8 +72,12 @@ export class ProductListComponent implements OnInit {
     this.productListFacadeService.showBestsellers();
 
   }
+
   onChangePage(page: number): void {
     this.productListFacadeService.changePage(page);
   }
 
+  protected addToCart(productId: string): void {
+    this.productListFacadeService.addToCart(productId);
+  }
 }

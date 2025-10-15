@@ -80,6 +80,9 @@ export const cartFeature = createFeature({
         });
       }
       return state;
+    }),
+    on(CartActions.clearCart, (state) => {
+      return initialCartState;
     })
   ),
 
@@ -155,7 +158,7 @@ export const cartFeature = createFeature({
       selectTotalItemsInCart,
       selectTotalPrice,
       (totalItems, totalPrice): CartSummaryDetails => {
-        const shipping = totalPrice > 100 ? 0 : 10; 
+        const shipping = totalPrice > 100 ? 0 : 10;
         const tax = totalPrice * 0.08; // example tax 8%
         return {
           totalItems,

@@ -15,9 +15,12 @@ import { Category } from '../../../../features/categories/models/category.model'
 })
 export class DesktopNavComponent {
   @Input({ required: true }) categories$!: Observable<Category[]>;
+  @Input({ required: true }) itemsCount$!: Observable<number>;
   @Output() showAllClicked = new EventEmitter<void>();
   @Output() showBestsellersClicked = new EventEmitter<void>();
   @Output() categoryClicked = new EventEmitter<number>();
+
+  
 
   onShowAll(): void {
     this.showAllClicked.emit();

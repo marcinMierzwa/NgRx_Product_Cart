@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Product } from '../../models/product.model';
 
 @Component({
@@ -11,4 +11,9 @@ import { Product } from '../../models/product.model';
 })
 export class ProductCardComponent {
   product = input.required<Product>();
+  addToCart = output<string>();
+
+  protected onAddToCart(productId: string): void {
+    this.addToCart.emit(productId);
+  }
 }

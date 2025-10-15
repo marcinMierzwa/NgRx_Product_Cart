@@ -10,6 +10,7 @@ import { ProductActions } from '../store/product.actions';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product.model';
 import { PageMeta } from '../../../shared/models/page-meta.model';
+import { CartActions } from '../../cart/store/cart.actions';
 
 @Injectable({ providedIn: 'root' })
 export class ProductListFacadeService {
@@ -46,5 +47,12 @@ export class ProductListFacadeService {
 
   changePage(page: number): void {
     this.store.dispatch(ProductActions.changePage({ page }));
+  }
+
+  addToCart(productId: string): void {
+    if(productId) {
+      this.store.dispatch(CartActions.addProductToCart({ productId }));
+    }
+    
   }
 }

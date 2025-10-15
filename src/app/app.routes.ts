@@ -1,9 +1,5 @@
 import { Routes } from '@angular/router';
-import { provideEffects } from '@ngrx/effects';
-import { provideState } from '@ngrx/store';
 import { CategoriesFacadeService } from './features/categories/services/categories.facade.service';
-import { categoryFeature } from './features/categories/store/category.reducer';
-import * as categoryEffects from './features/categories/store/category.effects';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 
 export const routes: Routes = [
@@ -12,8 +8,6 @@ export const routes: Routes = [
     component: MainLayoutComponent,
 
     providers: [
-      provideState(categoryFeature),
-      provideEffects(categoryEffects),
       CategoriesFacadeService,
     ],
 
