@@ -13,6 +13,7 @@ export interface CartItemWithDetails extends CartItem {
 
 export interface CartSummaryDetails {
   totalItems: number;
+  subtotal: number;
   totalPrice: number;
   shipping: number;
   tax: number;

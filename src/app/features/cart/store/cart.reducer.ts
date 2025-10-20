@@ -157,14 +157,17 @@ export const cartFeature = createFeature({
     const selectCartSummaryDetails = createSelector(
       selectTotalItemsInCart,
       selectTotalPrice,
-      (totalItems, totalPrice): CartSummaryDetails => {
-        const shipping = totalPrice > 100 ? 0 : 10;
-        const tax = totalPrice * 0.08; // example tax 8%
+      (totalItems, subtotal): CartSummaryDetails => {
+        const shipping = subtotal > 100 ? 0 : 10;
+        const tax = subtotal * 0.08; // 8% tax
+        const totalPrice = subtotal + shipping + tax;
+
         return {
           totalItems,
-          totalPrice,
+          subtotal,
           shipping,
           tax,
+          totalPrice,
         };
       }
     );

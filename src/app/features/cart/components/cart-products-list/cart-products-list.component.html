@@ -23,7 +23,9 @@
       }
     </div>
 
-    <app-cart-summary />
+    <app-cart-summary
+    [summary$]="cartSummaryDetails$"
+    />
   </div>
   <button
     type="button"
