@@ -7,9 +7,7 @@ export const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
 
-    providers: [
-      CategoriesFacadeService,
-    ],
+    providers: [CategoriesFacadeService],
 
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,15 +19,14 @@ export const routes: Routes = [
             (m) => m.PRODUCT_ROUTES
           ),
       },
-      {
-        path: 'cart',
-        title: 'Shopping Cart',
-        loadChildren: () =>
-          import('./features/cart/store/cart.routes').then(
-            (m) => m.CART_ROUTES
-          ),
-      },
-      { path: '**', redirectTo: 'home' },
     ],
   },
+
+  {
+    path: 'cart',
+    title: 'Shopping Cart',
+    loadChildren: () =>
+      import('./features/cart/store/cart.routes').then((m) => m.CART_ROUTES),
+  },
+  { path: '**', redirectTo: 'home' },
 ];

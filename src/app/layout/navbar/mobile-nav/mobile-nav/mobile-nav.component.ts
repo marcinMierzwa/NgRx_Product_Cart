@@ -2,9 +2,11 @@ import {
   Component,
   computed,
   effect,
+  EventEmitter,
   inject,
   input,
   Input,
+  Output,
   Renderer2,
   signal,
   Signal,
@@ -16,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { Category } from '../../../../features/categories/models/category.model';
+import { RouterLink } from "@angular/router";
 
 enum MatIconName {
   menu = 'menu',
@@ -31,7 +34,8 @@ enum MatIconName {
     MatButtonModule,
     MatIconModule,
     AsyncPipe,
-  ],
+    RouterLink
+],
   templateUrl: './mobile-nav.component.html',
   styleUrl: './mobile-nav.component.scss',
 })
@@ -40,6 +44,11 @@ export class MobileNavComponent {
 
   @Input({ required: true }) categories$!: Observable<Category[]>;
   @Input({ required: true }) itemsCount$!: Observable<number>;
+  @Output() showAllClicked = new EventEmitter<void>();
+  @Output() showBestsellersClicked = new EventEmitter<void>();
+  @Output() categoryClicked = new EventEmitter<number>();
+  readonly logoPath = 'assets/logo.png';
+
   isMenuOpen = signal<boolean>(false);
   matIcon: Signal<MatIconName> = computed(() =>
     this.isMenuOpen() ? MatIconName.close : MatIconName.menu
@@ -57,5 +66,20 @@ export class MobileNavComponent {
 
   toggleIsMenuOpen(): void {
     this.isMenuOpen.update((currentValue: boolean) => !currentValue);
+  }
+
+  onShowAll(): void {
+    this.showAllClicked.emit();
+    this.isMenuOpen.set(false);
+  }
+
+  onShowBestsellers(): void {
+    this.showBestsellersClicked.emit();
+    this.isMenuOpen.set(false);
+  }
+
+  onCategoryClick(categoryId: number): void {
+    this.categoryClicked.emit(categoryId);
+    this.isMenuOpen.set(false);
   }
 }

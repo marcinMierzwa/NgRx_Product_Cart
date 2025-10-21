@@ -26,7 +26,6 @@ export class NavbarComponent implements OnInit {
   );
   private readonly store = inject(Store);
 
-
   readonly isMoblieView = this.layoutService.isMobile;
   categories$: Observable<Category[]> = this.categoryFacadeService.categories$;
 

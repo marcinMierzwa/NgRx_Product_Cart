@@ -19,6 +19,8 @@ export class DesktopNavComponent {
   @Output() showAllClicked = new EventEmitter<void>();
   @Output() showBestsellersClicked = new EventEmitter<void>();
   @Output() categoryClicked = new EventEmitter<number>();
+  readonly logoPath = 'assets/logo.png';
+
 
   
 

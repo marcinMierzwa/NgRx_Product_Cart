@@ -8,11 +8,12 @@ import {
   CartSummaryDetails,
 } from '../../store/cart.state';
 import { AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart-products-list',
   standalone: true,
-  imports: [CartSummaryComponent, CartProductItemCardComponent, AsyncPipe],
+  imports: [CartSummaryComponent, CartProductItemCardComponent, AsyncPipe, RouterLink],
   templateUrl: './cart-products-list.component.html',
   styleUrl: './cart-products-list.component.scss',
 })

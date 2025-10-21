@@ -4,12 +4,8 @@
   <nav class="shadow-md relative p-4 z-20">
     <div class="flex items-center justify-between px-2">
       <div class="flex items-center gap-5">
-        <a href="https://flowbite.com/">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            class="h-8"
-            alt="Logo"
-          />
+        <a routerLink="home">
+          <img [src]="logoPath" class="h-10" alt="Logo" />
         </a>
         <button
           class="flex items-center"
@@ -21,10 +17,7 @@
       </div>
 
       <div class="flex items-center gap-6">
-        <button class="flex items-center">
-          <mat-icon class="icon-size font-medium">search</mat-icon>
-        </button>
-        <app-cart-icon [matBadgeSize]="'small'" [itemsCount$]="itemsCount$"/>
+        <app-cart-icon [matBadgeSize]="'small'" [itemsCount$]="itemsCount$" />
       </div>
     </div>
   </nav>
@@ -36,17 +29,20 @@
 
       <ul class="flex flex-col gap-4 mt-6">
         <li
+          (click)="onShowAll()"
           class="py-2 px-3 text-dark tracking-wide hover:text-blue-600 cursor-pointer text-xl"
         >
           all
         </li>
         <li
+          (click)="onShowBestsellers()"
           class="py-2 px-3 text-dark tracking-wide hover:text-blue-600 cursor-pointer text-xl"
         >
           bestsellers
         </li>
         @for(category of (categories$ | async); track category.id) {
         <li
+          (click)="onCategoryClick(category.id)"
           class="py-2 px-3 text-dark tracking-wide hover:text-blue-600 cursor-pointer text-xl"
         >
           {{ category.name }}

@@ -18,7 +18,7 @@ export const productFeature = createFeature({
     // when loading success
     on(ProductActions.loadProductsSuccess, (state, { products, meta }) => {
       // we're using adapter to fetch all products to state
-      return productAdapter.setAll(products, {
+      return productAdapter.upsertMany(products, {
         ...state,
         isLoading: false,
         pagination: meta,

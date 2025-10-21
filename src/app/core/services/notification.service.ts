@@ -6,4 +6,8 @@ export class NotificationService {
     showError(errorMessage: string): void {
         alert(errorMessage);
     }
+
+    showInfo(message: string): void {
+        alert(message);
+    }
 }
