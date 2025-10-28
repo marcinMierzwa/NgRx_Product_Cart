@@ -12,5 +12,6 @@ export const ProductActions = createActionGroup({
     'Show All Products': emptyProps(),
     'Show Category': props<{ categoryId: number }>(),
     'Change Page': props<{ page: number }>(),
+    'Search Products': props<{ searchTerm: string }>(),
   },
 });

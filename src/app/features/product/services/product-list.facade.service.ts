@@ -5,6 +5,7 @@ import {
   selectPagination,
   selectProductDisplayTitle,
   selectProductIsLoading,
+  selectSearchTerm,
 } from '../store/product.reducer';
 import { ProductActions } from '../store/product.actions';
 import { Observable } from 'rxjs';
@@ -53,6 +54,11 @@ export class ProductListFacadeService {
     if(productId) {
       this.store.dispatch(CartActions.addProductToCart({ productId }));
     }
-    
+  }
+
+  searchProducts(searchTerm: string): void {
+    if(searchTerm) {
+      this.store.dispatch(ProductActions.searchProducts({ searchTerm }));
+    }
   }
 }

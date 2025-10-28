@@ -34,6 +34,9 @@
     }
   </ul>
 
-  <app-search-bar class="flex-1" />
+  <app-search-bar 
+  class="flex-1" 
+  (search)="onSearch($event)"
+  />
   <app-cart-icon [matBadgeSize]="'medium'" [itemsCount$]="itemsCount$"/>
 </nav>

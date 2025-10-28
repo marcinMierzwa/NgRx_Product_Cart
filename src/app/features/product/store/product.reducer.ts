@@ -31,30 +31,33 @@ export const productFeature = createFeature({
       error,
     })),
     // when showing bestsellers
-    on(ProductActions.showBestsellers, (state) => ({
+    on(ProductActions.showBestsellers, (state) => productAdapter.removeAll ({
       ...state,
       isLoading: true,
       error: null,
       displayMode: 'bestsellers' as ProductDisplayMode,
       selectedCategoryId: null,
+      searchTerm: '',
       pagination: { ...state.pagination, currentPage: 1 },
     })),
     // when showing all products
-    on(ProductActions.showAllProducts, (state) => ({
+    on(ProductActions.showAllProducts, (state) => productAdapter.removeAll  ({
       ...state,
       isLoading: true,
       error: null,
       displayMode: 'all' as ProductDisplayMode,
       selectedCategoryId: null,
+      searchTerm: '',
       pagination: { ...state.pagination, currentPage: 1 },
     })),
     // when showing selected category
-    on(ProductActions.showCategory, (state, { categoryId }) => ({
+    on(ProductActions.showCategory, (state, { categoryId }) => productAdapter.removeAll ({
       ...state,
       isLoading: true,
       error: null,
       displayMode: 'byCategory' as ProductDisplayMode,
       selectedCategoryId: categoryId,
+      searchTerm: '',
       pagination: { ...state.pagination, currentPage: 1 },
     })),
     // when page is changing
@@ -63,6 +66,16 @@ export const productFeature = createFeature({
       isLoading: true,
       error: null,
       pagination: { ...state.pagination, currentPage: page },
+    })),
+    // when searching phrase to display
+    on(ProductActions.searchProducts, (state, { searchTerm }) => productAdapter.removeAll ({
+      ...state,
+      isLoading: true,
+      error: null,
+      displayMode: 'search' as ProductDisplayMode,
+      selectedCategoryId: null,
+      searchTerm: searchTerm,
+      pagination: { ...state.pagination, currentPage: 1 },
     }))
   ),
 
@@ -94,14 +107,16 @@ export const {
   selectProductEntities,
   selectProductIds,
   selectProductTotal,
+  selectSearchTerm,
 } = productFeature;
 
 export const selectProductDisplayTitle = createSelector(
   selectDisplayMode,
   selectSelectedCategoryId,
   selectCategoryEntities,
+  selectSearchTerm,
 
-  (displayMode, categoryId, categoryEntities) => {
+  (displayMode, categoryId, categoryEntities, searchTerm) => {
     switch (displayMode) {
       case 'bestsellers':
         return 'bestsellers';
@@ -111,6 +126,9 @@ export const selectProductDisplayTitle = createSelector(
           ? categoryEntities[categoryId]?.name
           : undefined;
         return categoryName ?? 'category';
+
+      case 'search':
+        return searchTerm ? `Search: "${searchTerm}"` : 'Search Results';
 
       case 'all':
       default:

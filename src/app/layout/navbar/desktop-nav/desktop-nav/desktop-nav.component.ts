@@ -19,10 +19,13 @@ export class DesktopNavComponent {
   @Output() showAllClicked = new EventEmitter<void>();
   @Output() showBestsellersClicked = new EventEmitter<void>();
   @Output() categoryClicked = new EventEmitter<number>();
+  @Output() search = new EventEmitter<string>();
   readonly logoPath = 'assets/logo.png';
 
 
-  
+  protected onSearch(phrase: string): void {
+    this.search.emit(phrase);
+  }
 
   onShowAll(): void {
     this.showAllClicked.emit();

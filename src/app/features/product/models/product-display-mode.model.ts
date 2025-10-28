@@ -1,1 +1,1 @@
-export type ProductDisplayMode = 'all' | 'bestsellers' | 'byCategory';
+export type ProductDisplayMode = 'all' | 'bestsellers' | 'byCategory' | 'search';

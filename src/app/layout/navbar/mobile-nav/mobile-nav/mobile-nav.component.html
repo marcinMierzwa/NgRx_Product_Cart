@@ -25,7 +25,9 @@
   <!-- 2. MOBILE MENU OVERLAY -->
   <div class="mobile-menu-overlay bg-gray-100" [class.is-open]="isMenuOpen()">
     <div class="p-4 pt-20">
-      <app-search-bar />
+      <app-search-bar 
+      (search)="onSearch($event)"
+      />
 
       <ul class="flex flex-col gap-4 mt-6">
         <li

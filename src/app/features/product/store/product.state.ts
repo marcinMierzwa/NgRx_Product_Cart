@@ -3,7 +3,6 @@ import { Product } from '../models/product.model';
 import { ProductDisplayMode } from '../models/product-display-mode.model';
 
 export interface ProductState extends EntityState<Product> {
-  // searchTerm: string;
   isLoading: boolean;
   error: any | null;
   displayMode: ProductDisplayMode;
@@ -13,7 +12,8 @@ export interface ProductState extends EntityState<Product> {
     pageSize: number;
     totalItems: number;
     totalPages: number;
-  }
+  };
+  searchTerm: string;
 }
 
 // Entity Adapter provides fuctionality
@@ -33,5 +33,6 @@ export const initialProductState: ProductState = productAdapter.getInitialState(
       totalItems: 0,
       totalPages: 0,
     },
+    searchTerm: '',
   }
 );

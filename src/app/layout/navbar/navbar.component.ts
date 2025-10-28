@@ -29,7 +29,13 @@ export class NavbarComponent implements OnInit {
   readonly isMoblieView = this.layoutService.isMobile;
   categories$: Observable<Category[]> = this.categoryFacadeService.categories$;
 
-  readonly itemsCount$: Observable<number> = this.store.select(selectTotalItemsInCart);
+  readonly itemsCount$: Observable<number> = this.store.select(
+    selectTotalItemsInCart
+  );
+
+  ngOnInit(): void {
+    this.categoryFacadeService.loadCategories();
+  }
 
   onShowAll(): void {
     this.productFacadeService.showAllProducts();
@@ -43,7 +49,7 @@ export class NavbarComponent implements OnInit {
     this.productFacadeService.showCategory(categoryId);
   }
 
-  ngOnInit(): void {
-    this.categoryFacadeService.loadCategories();
+  onSearch(phrase: string): void {
+      this.productFacadeService.searchProducts(phrase);
   }
 }
